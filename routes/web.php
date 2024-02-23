@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\frontend\HomesController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionsController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\BulldogStrongerSliderController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\DogProfileController;
 use App\Http\Controllers\WeeklyController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,12 +32,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/done', function () {
-    Artisan::call('migrate:fresh --seed');
-    Artisan::call('optimize:clear');
+    // Artisan::call('migrate:fresh --seed');
+    // Artisan::call('optimize:clear');
+    // $user = [
+    //     'name' => 'WLAB',
+    //     'email' => 'wlab@gmail.com',
+    //     'password' => Hash::make('happy2021'),
+    //     'email_verified_at' => date('Y-m-d h:i:s'),
+    // ];
+
+    // $userd = User::create($user);
+    // $userd->assignRole('User');
     return 'done';
 });
 
-// Frontend  
+// Frontend
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/get_a_puppy', [FrontendController::class, 'get_a_puppy'])->name('get_a_puppy');
@@ -53,19 +64,19 @@ Route::get('/visitors_login', [FrontendController::class, 'visitors_login'])->na
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
     Route::get('/home', [PagesController::class, 'home'])->name('home.index');
     Route::post('/home/store', [PagesController::class, 'store'])->name('home.store');
-    
-    // Testimonial 
+
+    // Testimonial
     Route::resource('testimonial', TestimonialController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('partner', PartnerController::class);
-    
+
     // social
     Route::resource('social', SocialController::class);
     Route::resource('bulldog_stronger_slider', BulldogStrongerSliderController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('dogs_profile', DogProfileController::class);
-    
-//    Route::get('/dog_weekly/{id}', [DogProfileController::class, 'weekly'])->name('/dog_weekly/{id}');
+
+    //    Route::get('/dog_weekly/{id}', [DogProfileController::class, 'weekly'])->name('/dog_weekly/{id}');
     Route::get('/weekly/{id}', [WeeklyController::class, 'index'])->name('weekly.index');
     Route::get('/weekly/create/{id}', [WeeklyController::class, 'create'])->name('weekly.create');
     Route::get('/weekly/edit/{id}', [WeeklyController::class, 'edit'])->name('weekly.edit');
@@ -76,7 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');
 
     // slider
-  
+
 
     // Home Sections
     Route::get('/home_section1', [SectionsController::class, 'home_section1'])->name('home_section1.index');
@@ -125,11 +136,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     Route::resource('roles', RoleController::class);
 
-        Route::resource('permission', PermissionController::class);
-        // user route
-    Route::resource('users',UsersController::class);
-    Route::resource('services',OurServiceController::class);
-    
+    Route::resource('permission', PermissionController::class);
+    // user route
+    Route::resource('users', UsersController::class);
+    Route::resource('services', OurServiceController::class);
+
 
     Route::resource('permission', PermissionController::class);
     // user route
@@ -137,16 +148,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
 
 });
-Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
-    Route::get('/dashboard', function () {
-        return view('user.layouts.app'); })->middleware(['auth', 'verified'])->name('user.dashboard');
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:User']], function () {
+    // Route::get('/dashboard', function () {
+    //     return view('user.layouts.app');
+    // })->middleware(['auth', 'verified'])->name('user.dashboard');
+    Route::get('/planned-litter', function () {
+
+    })->name('planned');
+    Route::get('/planned-litter', [HomesController::class, 'planned'])->name('planned');
+    Route::get('/weekly-update/{id}', [HomesController::class, 'dogsdetails'])->name('dogs.details');
 
 
 
 });
 
 Route::get('/admin/dashboard', function () {
-    return view('admin.layouts.app'); })->middleware(['auth', 'verified'])->name('admin.dashboard');
+    return view('admin.layouts.app');
+})->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -159,7 +177,7 @@ Route::get('/setting', [PagesController::class, 'setting'])->name('setting.index
 Route::post('/setting.store', [PagesController::class, 'settingstore'])->name('setting.store');
 
 
- 
+
 
 
 require __DIR__ . '/auth.php';

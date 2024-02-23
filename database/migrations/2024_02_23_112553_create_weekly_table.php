@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('weekly', function (Blueprint $table) {
             $table->id();
             $table->string('dog_id');
-            $table->string('heading');
+            $table->string('image');
+            // $table->string('heading');
             $table->string('title');
             $table->string('description');
-            $table->string('dob');
-            $table->string('video');
+            // $table->string('dob');
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }
