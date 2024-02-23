@@ -68,7 +68,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 //    Route::get('/dog_weekly/{id}', [DogProfileController::class, 'weekly'])->name('/dog_weekly/{id}');
     Route::get('/weekly/{id}', [WeeklyController::class, 'index'])->name('weekly.index');
     Route::get('/weekly/create/{id}', [WeeklyController::class, 'create'])->name('weekly.create');
-    Route::post('/weekly/store/{id}', [WeeklyController::class, 'store'])->name('weekly.store');
+    Route::get('/weekly/edit/{id}', [WeeklyController::class, 'edit'])->name('weekly.edit');
+    Route::post('/weekly/delete/{id}', [WeeklyController::class, 'destroy'])->name('weekly.destroy');
+    Route::put('/weekly/store/{id}', [WeeklyController::class, 'store'])->name('weekly.store');
 
     // About
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');
