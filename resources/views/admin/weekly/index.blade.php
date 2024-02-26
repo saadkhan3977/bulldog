@@ -19,35 +19,20 @@
             <tr>
                 <th>S.N</th>
                 <th>Dog ID</th>
-                <th>Heading</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Date Of Birth</th>
                 <th>Video</th>
                 <th>Action</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-                <th>S.N</th>
-                <th>Dog ID</th>
-                <th>Heading</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Date Of Birth</th>
-                <th>Video</th>
-                <th>Action</th>
-              </tr>
-          </tfoot>
+
           <tbody>
           @foreach ($weeklys as $weekly)
             <tr>
                 <td>{{ $weekly->id }}</td>
-                <td>{{ $weekly->dog_id }}</td>
-                <td>{{ $weekly->heading }}</td>
+                <td>{{ $weekly->user->title }}</td>
                 <td>{{ $weekly->title }}</td>
                 <td>{{ $weekly->description }}</td>
-                <td>{{ $weekly->dob }}</td>
                 <td>{{ $weekly->video }}</td>
                 <!-- <td><a href="/admin/weekly_weekly/{{$weekly->id}}"><i class='fa fa-eye'></i></a></td> -->
                 <td>
@@ -58,7 +43,6 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this service?')">Delete</button>
                     </form>
                 </td>
-                <td></td>
             </tr>
           @endforeach
           </tbody>

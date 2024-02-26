@@ -10,4 +10,8 @@ class Dogs extends Model
     use HasFactory;
     protected $table = 'dogs_profile';
     protected $guarded = [];
+
+    public  function weekly() {
+        return $this->hasMany(Weekly::class, "dog_id");
+    }
 }

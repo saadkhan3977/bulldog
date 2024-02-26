@@ -71,7 +71,7 @@
             border-radius: 33px;
             }
         .contact-div ul.solicalization li a {
-        
+
             color: #ffffff;
             padding: 0px 11px;
         }
@@ -130,7 +130,7 @@
         </div>
         <nav class="navbar navbar-light navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="/uploads/{{$setting->logo_1}}" alt="logo" class="logo"></a>
+                <a class="navbar-brand" href="/"><img src="/uploads/{{$setting->logo_1 ?? ''}}" alt="logo" class="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -158,7 +158,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/available_pups">Available Pups</a>
                             </li>
-							
+
                             <li class="nav-item">
                                 <a class="nav-link" href="/planned_breeding">Planned Breedings</a>
                             </li>
@@ -170,7 +170,7 @@
                             </li>
                             <li class="nav-link db">
                                 <div class="bone-btn1">
-                                    <a class="bone" href="/visitors_login">
+                                    <a class="bone" href="{{route('login')}}">
                                         <span>Login</span>
                                     </a>
                                     <svg style="visibility: hidden; position: absolute;" width="0" height="0"
@@ -201,7 +201,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 px-4">
-                    <img src="/uploads/{{$setting->logo_2}}" alt="footer-logo" class="footer-logo mb-4" />
+                    <img src="/uploads/{{$setting->logo_2 ?? ''}}" alt="footer-logo" class="footer-logo mb-4" />
                     <!-- <div class="social-icons">
                         <a href="https://www.facebook.com/VillaFourniersAmericanBulldogs"><i
                                 class="fa-brands fa-facebook-f"></i></a>
@@ -267,13 +267,13 @@
                         <li>
                             <div class="social">
                                 <i class="fa-solid fa-phone"></i>
-                                <a href="tel:{{$setting->phone}}">{{$setting->phone}}</a>
+                                <a href="tel:{{$setting->phone ?? ''}}">{{$setting->phone ?? ''}}</a>
                             </div>
                         </li>
                         <li>
                             <div class="social">
                                 <i class="fa-regular fa-envelope"></i>
-                                <a href="mailto:{{$setting->email}}">{{$setting->email}}</a>
+                                <a href="mailto:{{$setting->email ?? ''}}">{{$setting->email ?? ''}}</a>
                             </div>
                         </li>
                         <!-- <li>
@@ -287,7 +287,7 @@
             </div>
         </div>
         <div class="container-fluid">
-            <p class="copyright">{{$setting->copyright}}</p>
+            <p class="copyright">{{$setting->copyright ?? ''}}</p>
         </div>
     </footer>
 

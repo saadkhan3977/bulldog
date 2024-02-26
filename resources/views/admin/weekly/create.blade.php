@@ -2,7 +2,7 @@
 @section('content')
 
 <style>
-  
+
   .form-check-input{
     border-radius: 0 !important;
     height: 20px;
@@ -24,7 +24,7 @@
     padding-left: 30px;
     text-transform:capitalize;
   }
-  
+
   .btn-primary1 {
     font-size: 16px;
     border-radius: 20px !important;
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                    
+
                     <form action="{{ route('weekly.store',$id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -58,12 +58,12 @@
                         <textarea name="description" id="summernote" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                            <label for="title">video</label>
-                            <input type="file" name="video" accept="video/mp4" class="form-control" required>
-                    </div>   			
+                            <label for="title">Video</label>
+                            <input type="file" name="video" accept="video/mp4" class="form-control">
+                    </div>
                       <!-- Data Table for Multiple Categories -->
                       <table class="table table-bordered" id="categories-table">
-                      
+
                       <thead>
                             <tr>
                                 <th>Type</th>
@@ -77,8 +77,8 @@
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                     </select>
-                                
-                                </td>    
+
+                                </td>
                                 <td>
                                     <input type="file" name="file[]" class="form-control">
                                 </td>
