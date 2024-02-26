@@ -71,7 +71,7 @@ class SocialController extends Controller
         if ($request->hasFile('image')) {
             $fileName1 = time().'.'.$request->image->extension();
             $request->image->move(public_path('uploads/social'), $fileName1);
-        File::delete(public_path('uploads/social/').$social->image); 
+                  File::delete(public_path('uploads/social/').$social->image); 
 
         }
     

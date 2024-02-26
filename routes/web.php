@@ -65,10 +65,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('contact', ContactController::class);
     Route::resource('dogs_profile', DogProfileController::class);
     
-//    Route::get('/dog_weekly/{id}', [DogProfileController::class, 'weekly'])->name('/dog_weekly/{id}');
+//  Route::get('/dog_weekly/{id}', [DogProfileController::class, 'weekly'])->name('/dog_weekly/{id}');
     Route::get('/weekly/{id}', [WeeklyController::class, 'index'])->name('weekly.index');
     Route::get('/weekly/create/{id}', [WeeklyController::class, 'create'])->name('weekly.create');
     Route::post('/weekly/store/{id}', [WeeklyController::class, 'store'])->name('weekly.store');
+    Route::get('/weekly/edit/{id}', [WeeklyController::class, 'edit'])->name('weekly.edit');
+    Route::put('/weekly/update/{id}', [WeeklyController::class, 'update'])->name('weekly.update');
+    Route::delete('/weekly/delete/{id}', [WeeklyController::class, 'delete'])->name('weekly.delete');
 
     // About
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');
@@ -156,8 +159,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/setting', [PagesController::class, 'setting'])->name('setting.index');
 Route::post('/setting.store', [PagesController::class, 'settingstore'])->name('setting.store');
 
-
- 
 
 
 require __DIR__ . '/auth.php';

@@ -10,7 +10,7 @@
      </div>
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary float-left">weekly List</h6>
-      <a href="{{route('weekly.create',$id)}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fa fa-plus"></i> Add Our weekly</a>
+      <a href="{{ route('weekly.create', ['id' => $id]) }}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fa fa-plus"></i> Add Our weekly</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -49,16 +49,14 @@
                 <td>{{ $weekly->description }}</td>
                 <td>{{ $weekly->dob }}</td>
                 <td>{{ $weekly->video }}</td>
-                <!-- <td><a href="/admin/weekly_weekly/{{$weekly->id}}"><i class='fa fa-eye'></i></a></td> -->
                 <td>
-                    <a href="{{ route('weeklys_profile.edit', $weekly->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                    <form action="{{ route('weeklys_profile.destroy', $weekly->id) }}" method="POST" class="d-inline">
+                    <a href="{{ route('weekly.edit', ['id' => $id])  }}" class="btn btn-primary btn-sm">Edit</a>
+                    <form action="{{ route('weekly.delete', ['id' => $id])  }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this service?')">Delete</button>
-                    </form>
-                </td>
-                <td></td>
+                    </form> 
+                </td> 
             </tr>
           @endforeach
           </tbody>

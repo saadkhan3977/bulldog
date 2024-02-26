@@ -6,7 +6,7 @@
     <h5 class="card-header">Add Our Weekly</h5>
     <div class="card-body">
       <h2>Create New Weekly</h2>
-        <form action="{{ route('weekly.create',$id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('weekly.store', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
