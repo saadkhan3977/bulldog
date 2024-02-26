@@ -16,7 +16,11 @@
             </div>
             <div class="form-group">
                 <label for="title">Description</label>
-                <input type="text" name="description" class="form-control" required>
+                <textarea name="description" id="summernote" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date Of Birth</label>
+                <input type="date" name="dob" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="title">Main Image</label>

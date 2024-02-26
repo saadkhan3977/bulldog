@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('dogs_profile', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->longtext('description');
+            $table->string('dob');
             $table->string('main_image');
             $table->string('main_video');
             $table->string('other_image1');

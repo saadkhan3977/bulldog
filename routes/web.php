@@ -34,15 +34,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/done', function () {
     // Artisan::call('migrate:fresh --seed');
     // Artisan::call('optimize:clear');
-    // $user = [
-    //     'name' => 'WLAB',
-    //     'email' => 'wlab@gmail.com',
-    //     'password' => Hash::make('happy2021'),
-    //     'email_verified_at' => date('Y-m-d h:i:s'),
-    // ];
+    $user = [
+        'name' => 'WLAB',
+        'email' => 'wlab@gmail.com',
+        'password' => Hash::make('happy2021'),
+        'email_verified_at' => date('Y-m-d h:i:s'),
+    ];
 
-    // $userd = User::create($user);
-    // $userd->assignRole('User');
+    $userd = User::create($user);
+    $userd->assignRole('User');
     return 'done';
 });
 
@@ -57,6 +57,7 @@ Route::get('/join_bulldog_stronger', [FrontendController::class, 'join_bulldog_s
 Route::get('/puppy_questionnaire', [FrontendController::class, 'puppy_questionnaire'])->name('puppy_questionnaire');
 Route::get('/contact_us', [FrontendController::class, 'contact_us'])->name('contact_us');
 Route::post('/contact', [FrontendController::class, 'contact_submit'])->name('contact_submit');
+Route::get('/week-update-detail/{id}', [FrontendController::class, 'week_update_detail'])->name('week_update_detail');
 Route::get('/junior.html', [FrontendController::class, 'junior'])->name('/junior.html');
 
 Route::get('/visitors_login', [FrontendController::class, 'visitors_login'])->name('visitors_login');
@@ -82,7 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::put('/weekly/store/{id}', [WeeklyController::class, 'store'])->name('weekly.store');
     Route::get('/weekly/edit/{id}', [WeeklyController::class, 'edit'])->name('weekly.edit');
     Route::get('/weekly/update/{id}', [WeeklyController::class, 'update'])->name('weekly.update');
-    Route::post('/weekly/delete/{id}', [WeeklyController::class, 'destroy'])->name('weekly.destroy');
+    Route::delete('/weekly/delete/{id}', [WeeklyController::class, 'delete'])->name('weekly.delete');
     
     // About
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');
