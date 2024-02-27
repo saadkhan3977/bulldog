@@ -131,6 +131,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('/stronger_section5', [SectionsController::class, 'stronger_section5'])->name('stronger_section5.index');
     Route::get('/stronger_section6', [SectionsController::class, 'stronger_section6'])->name('stronger_section6.index');
 
+    // instagram 
+    Route::get('/instagram_section', [SectionsController::class, 'instagram_section'])->name('instagram_section.index');
+
 
 
     Route::post('/about/store', [PagesController::class, 'aboutstore'])->name('about.store');
@@ -179,6 +182,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/setting', [PagesController::class, 'setting'])->name('setting.index');
 Route::post('/setting.store', [PagesController::class, 'settingstore'])->name('setting.store');
+
+
 
 
 

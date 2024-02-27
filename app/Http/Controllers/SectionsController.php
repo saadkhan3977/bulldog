@@ -165,5 +165,13 @@ class SectionsController extends Controller
         return view('admin.pages.about', $data);
     }
 
+    public function instagram_section()
+    {
+       
+        $data['name'] = 'instagram section';
+        $data['pages'] = Cms::where('page', $data['name'])->get();
+        return view('admin.pages.about', $data);
+    }
+
   
 }

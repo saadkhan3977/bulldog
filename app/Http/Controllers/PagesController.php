@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Cms;
 use App\Models\Setting;
+use App\Models\Instagram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -170,5 +171,7 @@ class PagesController extends Controller
 
         return redirect()->to('setting');
     }
+
+   
 
 }
