@@ -22,6 +22,12 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
+    
+    public function admin_login()
+    {
+        return view('auth.admin-login');
+    }
+    
 
     /**
      * Handle an incoming registration request.

@@ -17,6 +17,7 @@ use App\Http\Controllers\BulldogStrongerSliderController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\DogProfileController;
 use App\Http\Controllers\WeeklyController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,7 @@ Route::get('/done', function () {
     $userd->assignRole('User');
     return 'done';
 });
+Route::get('/admin/login', [RegisteredUserController::class, 'admin_login'])->name('admin.login');
 
 // Frontend
 Route::get('/', [FrontendController::class, 'home'])->name('home');
