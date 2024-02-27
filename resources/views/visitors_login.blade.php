@@ -5,15 +5,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="login-form">
-                        <form>
+                    <form method="POST" action="{{ route('login') }}">
+                    @csrf
                             <h3 class="login-txt">Login</h3>
                             <p class="new-text">New to this site? <a href="sign-up.html"> Sign Up</a> </p>
                             <div class="form-group mb-3 mt-4">
                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Enter Your Email" required>
+                                    aria-describedby="emailHelp" name="email" placeholder="Enter Your Email" required>
                             </div>
                             <div class="form-group mb-3">
-                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
                                     placeholder="Enter Your Password" required>
                             </div>
                             <div class="bone-btn1">
