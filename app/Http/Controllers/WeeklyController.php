@@ -57,18 +57,20 @@ class WeeklyController extends Controller
         $weekly->save();
 
         $filePaths = [];
-        
-        foreach ($request->file('file') as $key => $coverImage) {
-            $fileName = Str::uuid() . '.' . $coverImage->getClientOriginalExtension();
-            $filepath =  $coverImage->move(public_path('uploads/'), $fileName);
-
-            $data = [
-                'weekly_id' => $weekly->id,
-                'type' => $request->input('type')[$key], // Access type using the key
-                'image' => $fileName, // Storing file path
-            ];
-            WeeklyImage::create($data);
+        if($request->file('file')){
+            foreach ($request->file('file') as $key => $coverImage) {
+                $fileName = Str::uuid() . '.' . $coverImage->getClientOriginalExtension();
+                $filepath =  $coverImage->move(public_path('uploads/'), $fileName);
+    
+                $data = [
+                    'weekly_id' => $weekly->id,
+                    'type' => $request->input('type')[$key], // Access type using the key
+                    'image' => $fileName, // Storing file path
+                ];
+                WeeklyImage::create($data);
+            }
         }
+      
 
         return redirect()->route('weekly.index',$id)->withSuccess('Data stored successfully.');
     }

@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('dogs_profile', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longtext('description');
-            $table->string('dob');
-            $table->string('main_image');
-            $table->string('main_video');
-            $table->string('other_image1');
-            $table->string('other_image2');
-            $table->string('other_image3');
-            $table->string('other_image4');
-            $table->string('pedigree_image');
+            $table->string('title')->nullable();
+            $table->longtext('description')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('main_image')->nullable();
+            $table->string('main_video')->nullable();
+            $table->string('other_image1')->nullable();
+            $table->string('other_image2')->nullable();
+            $table->string('other_image3')->nullable();
+            $table->string('other_image4')->nullable();
+            $table->string('pedigree_image')->nullable();
             $table->timestamps();
         });
     }
