@@ -28,12 +28,19 @@ class FrontendController extends Controller
                 $data['section'. $homei . $i] = json_decode($section[$i]->meta_value);
             }
         }
+        
+        $instagram_section = Cms::where('page', 'instagram section')->get();
+        for($i = 0; $i < count($instagram_section); $i++)
+        {
+            $data['instagram' . $i] = json_decode($instagram_section[$i]->meta_value);
+        }
         // die;
         $data['partner'] = Partner::get();
         $data['testimonials'] = Testimonial::get();
         
         return view('home',$data);
     }
+
 
 
     public function week_update_detail($id)

@@ -221,6 +221,8 @@
                             </a>
                         </li>
 
+                      
+
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown ">
@@ -310,6 +312,27 @@
 
                     </ul>
                 </li>
+
+
+                <!-- ////////////////////// -->
+                <li class="menu-item-has-children dropdown ">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="menu-icon fa fa-cogs"></i>Instagram
+                </a>
+
+                <ul class="sub-menu children dropdown-menu ">
+                <li class="{{ request()->routeIs('instagram_section.index') ? 'active' : '' }}">
+                            <a href="{{ route('instagram_section.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Instagram
+                            </a>
+                        </li>
+                    </ul>
+                    </li>
+                    <!--/////////////////////// -->
+             
+
                 <li class="menu-item-has-children dropdown ">
 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"

@@ -477,8 +477,8 @@
                     <h3 class="insta">OUR INSTAGRAM</h3>
                 </div>
                 <div class="col-sm-3">
-                    <a href="https://www.instagram.com/bulldogstronger/">
-                    <img src="/frontend/assets/images/insta1.png" alt="insta1" class="insta-img" />
+                    <a href="{{$instagram1->value}}">
+                    <img src="/uploads/user/profiles/{{$instagram0->value}}" alt="insta1" class="insta-img" />
                     </a>
                 </div>
                 <div class="col-sm-9">
@@ -487,23 +487,23 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <a href="https://www.instagram.com/reel/Cy_KFO5LSUK/">
-                                        <img src="/frontend/assets/images/insta-22.png" alt="insta-2" />
+                                    <a href="{{$instagram3->value}}">
+                                        <img src="/uploads/user/profiles/{{$instagram2->value}}" alt="insta-2"/>
                                     </a>     
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="https://www.instagram.com/reel/CyofGDAAM6e/">
-                                        <img src="/frontend/assets/images/insta-33.png" alt="insta-2" />
+                                    <a href="{{$instagram5->value}}">
+                                        <img src="/uploads/user/profiles/{{$instagram4->value}}" alt="insta-2" />
                                     </a>
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="https://www.instagram.com/p/CymE6IpAS0z/">
-                                        <img src="/frontend/assets/images/insta-44.png" alt="insta-2" />
+                                    <a href="{{$instagram7->value}}">
+                                        <img src="/uploads/user/profiles/{{$instagram6->value}}" alt="insta-2" />
                                     </a> 
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="https://www.instagram.com/p/CybRCt9roEJ/">
-                                        <img src="/frontend/assets/images/insta-55.png" alt="insta-2" />
+                                    <a href="{{$instagram9->value}}">
+                                        <img src="/uploads/user/profiles/{{$instagram8->value}}" alt="insta-2" />
                                     </a>
                                 </div>
                             </div>
