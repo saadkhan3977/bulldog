@@ -19,4 +19,6 @@ class HomesController extends Controller
         // dd($data['dog']);
         return view('frontend.weekly-update', $data);
     }
+    
+    
 }

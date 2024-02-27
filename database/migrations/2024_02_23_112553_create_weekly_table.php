@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('weekly', function (Blueprint $table) {
             $table->id();
-            $table->string('dog_id');
-            $table->string('image');
-            // $table->string('heading');
-            $table->string('title');
-            $table->string('description');
-            // $table->string('dob');
+            $table->string('dog_id')->nullable();
+            $table->string('image')->nullable();
+            $table->string('title')->nullable();
+            $table->longtext('description')->nullable();
             $table->string('video')->nullable();
             $table->timestamps();
         });

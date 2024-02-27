@@ -10,6 +10,7 @@ use App\Models\Contact;
 use App\Models\Gallery;
 use App\Models\Dogs;
 use App\Models\BulldogStrongerSlider;
+use App\Models\Weekly;
 
 class FrontendController extends Controller
 {
@@ -32,6 +33,14 @@ class FrontendController extends Controller
         $data['testimonials'] = Testimonial::get();
         
         return view('home',$data);
+    }
+
+
+    public function week_update_detail($id)
+    {
+        $data['weekly'] = Weekly::with('female_image','male_image')->find($id);
+        // dd($data['dog']);
+        return view('frontend.week_update_detail', $data);
     }
 
     

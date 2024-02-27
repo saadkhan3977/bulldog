@@ -27,6 +27,8 @@ class DogProfileController extends Controller
 
     public function store(Request $request)
     {
+
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
@@ -99,6 +101,7 @@ class DogProfileController extends Controller
         Dogs::create([
             'title' => request()->input('title'),
             'description' => request()->input('description'),
+            'dob' => request()->input('dob'),
             'main_image' => $mainImage,
             'main_video' => $mainVideo,
             'other_image1' =>  $otherimage1,
@@ -138,42 +141,35 @@ class DogProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
-            'main_image' => 'required|image:jpg,png',
-            'main_video' => 'required',
-            'other_image1' => 'required|image:jpg,png',
-            'other_image2' => 'required|image:jpg,png',
-            'other_image3' => 'required|image:jpg,png',
-            'other_image4' => 'required|image:jpg,png',
-            'pedigree_image' => 'required|image:jpg,png',
         ]);
     
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        
-        $mainImage = null;
+        $dogs = Dogs::find($id);  
+        $mainImage = $dogs->main_image;
     
         if ($request->hasFile('main_image')) {
             $mainImage = time().'.'.$request->main_image->extension();
             $request->main_image->move(public_path('uploads/Dogsimage/'),  $mainImage);
         }
 
-        $mainVideo = null;
+        $mainVideo = $dogs->main_video;
     
         if ($request->hasFile('main_video')) {
             $mainVideo = time().'.'.$request->main_video->extension();
             $request->main_video->move(public_path('uploads/Dogsimage/'), $mainVideo);
         }
 
-        $otherimage1 = null;
+        $otherimage1 = $dogs->other_image1;
     
         if ($request->hasFile('other_image1')) {
             $otherimage1 = time() . '1.'.$request->other_image1->extension();
             $request->other_image1->move(public_path('uploads/Dogsimage/'), $otherimage1);
         }
 
-        $otherimage2 = null;
+        $otherimage2 = $dogs->other_image2;
     
         if ($request->hasFile('other_image2')) {
             $otherimage2 = time(). '2.'.$request->other_image2->extension();
@@ -181,31 +177,31 @@ class DogProfileController extends Controller
         }
 
 
-        $otherimage3 = null;
+        $otherimage3 = $dogs->other_image3;
     
         if ($request->hasFile('other_image3')) {
             $otherimage3 = time().'3.'.$request->other_image3->extension();
             $request->other_image3->move(public_path('uploads/Dogsimage/'), $otherimage3);
         }
 
-        $otherimage4 = null;
+        $otherimage4 = $dogs->other_image4;
     
         if ($request->hasFile('other_image4')) {
             $otherimage4 = time().'4.'.$request->other_image4->extension();
             $request->other_image4->move(public_path('uploads/Dogsimage/'), $otherimage4);
         }
 
-        $pedigreeimage = null;
+        $pedigreeimage = $dogs->pedigree_image;
     
         if ($request->hasFile('pedigree_image')) {
             $pedigreeimage = time() . '55.'.$request->pedigree_image->extension();
             $request->pedigree_image->move(public_path('uploads/Dogsimage/'), $pedigreeimage);
         }
     
-        $dogs = Dogs::find($id);  
         $dogs->update([
             'title' => request()->input('title'),
             'description' => request()->input('description'),
+            'dob' => request()->input('dob'),
             'main_image' => $mainImage,
             'main_video' => $mainVideo,
             'other_image1' =>  $otherimage1,

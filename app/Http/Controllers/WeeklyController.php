@@ -9,6 +9,7 @@ use App\Models\Weekly;
 use App\Models\WeeklyImage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class WeeklyController extends Controller
 {
@@ -32,50 +33,56 @@ class WeeklyController extends Controller
     public function store(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [
-            'type.*' => 'required',
-            'file.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the file validation rules as needed
-        ]);
+        $fileName1 =  null;
+        if ($request->hasFile('image')) {
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            $fileName1 = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads/dog/image/'), $fileName1);
+        }
+        
+        $fileName2 =  null;
+        if ($request->hasFile('video')) {
+
+            $fileName2 = time() . '.' . $request->video->extension();
+            $request->video->move(public_path('uploads/dog/video/'), $fileName2);
         }
 
-        if ($request->hasfile('video')) {
-            $coverImage = $request->file('video');
-            $coverImageName = Str::uuid() . '.' . $coverImage->getClientOriginalExtension();
-            $videoPath = $coverImage->storeAs('uploads', $coverImageName, 'public');
-        }
 
         $weekly = new Weekly();
         $weekly->dog_id = $id;
         $weekly->title = $request->title;
         $weekly->description = $request->description;
-        $weekly->video = $videoPath ?? '';
+        $weekly->image = $fileName1;
+        $weekly->video = $fileName2;
         $weekly->save();
 
-        // Initialize an array to store all file paths
         $filePaths = [];
-
-        // Handle file upload for each file
         
         foreach ($request->file('file') as $key => $coverImage) {
             $fileName = Str::uuid() . '.' . $coverImage->getClientOriginalExtension();
-            $filePaths[] = $coverImage->storeAs('uploads', $fileName, 'public');
-        }
-        // Save data along with file paths in the database
-        foreach ($filePaths as $key => $filePath) {
-            $data = [
-                'weekly_id' => $id,
-                'type' => $request->input('type')[$key], // Access type using the key
-                'image' => $filePath, // Storing file path
-                // Add other fields if needed
-            ];
+            $filepath =  $coverImage->move(public_path('uploads/'), $fileName);
 
-            // Save to database
+            $data = [
+                'weekly_id' => $weekly->id,
+                'type' => $request->input('type')[$key], // Access type using the key
+                'image' => $fileName, // Storing file path
+            ];
             WeeklyImage::create($data);
         }
 
         return redirect()->route('weekly.index',$id)->withSuccess('Data stored successfully.');
+    }
+
+    public function delete($id)
+
+    {
+        $weekly = Weekly::find($id);
+        File::delete(public_path('uploads/weekly/').$weekly->image);
+            
+        $weekly->delete();
+        
+        
+
+        return redirect()->back()->with('success', 'Data deleted successfully');
     }
 }

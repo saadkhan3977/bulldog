@@ -58,6 +58,10 @@
                         <textarea name="description" id="summernote" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" class="form-control">
+                    </div>
+                    <div class="form-group">
                             <label for="title">Video</label>
                             <input type="file" name="video" accept="video/mp4" class="form-control">
                     </div>

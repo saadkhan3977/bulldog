@@ -96,9 +96,9 @@
                                        @if ($dog->weekly != null)
                                         @foreach ($dog->weekly as $item)
                                           <div class="col">
-                                              <a href="week-update/1.html">
+                                              <a href="/week-update-detail/{{$item->id}}">
                                                   <div class="card bg-dark text-white">
-                                                      <img src="{{ asset('uploads/Dogsimage/' . $item->image) }}" class="card-img"
+                                                      <img src="{{ asset('uploads/dog/image/' . $item->image) }}" class="card-img"
                                                           alt="...">
                                                       <div class="card-img-overlay">
                                                           <h6 class="card-title">Week 1 Puppy Updates</h6>
