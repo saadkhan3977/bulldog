@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('weekly_images', function (Blueprint $table) {
             $table->id();
-            $table->string('weekly_id');
-            $table->string('image');
-            $table->string('type');
+            $table->string('weekly_id')->nullable();
+            $table->string('image')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

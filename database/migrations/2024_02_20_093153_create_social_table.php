@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('social', function (Blueprint $table) {
             $table->id();
-            $table->string('social_link');
-            $table->string('image');
+            $table->string('social_link')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

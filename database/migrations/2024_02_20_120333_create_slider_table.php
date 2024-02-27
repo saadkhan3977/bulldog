@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('bulldog_stronger_slider', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('heading');
-            $table->text('description');
-            $table->string('image');
+            $table->string('title')->nullable();
+            $table->string('heading')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
