@@ -79,7 +79,7 @@
                 @elseif ($metaValue['type'] == 'number')
                     <input type="number" name="value" class="form-control" value="{{ $metaValue['value'] }}" required>
                 @elseif ($metaValue['type'] == 'file')
-                    <input type="file" name="value" accept=".jpg,.jpeg,.png,.webp" class="form-control-file" required>
+                    <input type="file" name="value" class="form-control-file" required>
                     @if ($metaValue['value'] != null)
                         <br><img src="{{ asset('storage/files/' . $metaValue['value']) }}" class="preview-image"
                             alt="File">

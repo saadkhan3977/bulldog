@@ -173,5 +173,9 @@ class SectionsController extends Controller
         return view('admin.pages.about', $data);
     }
 
+    public function puppy_questionnaire(){
+        return view('puppy_questionnaire');
+    }
+
   
 }

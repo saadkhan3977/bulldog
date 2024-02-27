@@ -133,6 +133,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     // instagram 
     Route::get('/instagram_section', [SectionsController::class, 'instagram_section'])->name('instagram_section.index');
+    Route::get('/puppy-questionnaire', [SectionsController::class, 'puppy_questionnaire'])->name('puppy-questionnaire');
 
 
 

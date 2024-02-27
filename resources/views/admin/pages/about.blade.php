@@ -221,7 +221,7 @@
                                                                                     @elseif($metaValue['type'] == 'file')
                                                                                         <input type="file"
                                                                                             name="value"
-                                                                                            accept=".jpg,.jpeg,.png,.webp"
+                                                                                        
                                                                                             class="form-control-file"
                                                                                             required>
                                                                                         @if ($metaValue['value'] != null)
