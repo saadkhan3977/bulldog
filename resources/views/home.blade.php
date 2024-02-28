@@ -1,5 +1,28 @@
 @extends('layouts.master')
 @section('content')
+<style>
+        .align-items-end {
+            align-items: center !important;
+        }
+        .insta-img:hover {
+            transform: scale(1.05);
+            }
+
+        .insta-img {
+            width: 100%;
+            transform: scale(1.0);
+            transition: 0.3s ease-in-out;
+        }
+        .insta-inner img:hover {
+            transform: scale(1.05);
+        }
+
+        .insta-inner img {
+            width: 95%;
+            transition: 0.3s ease-in-out;
+            transform: scale(1.0);
+        }
+    </style>
 <section class="main-1">
         <div class="container">
             <div class="row align-items-center">
@@ -398,8 +421,7 @@
                     <div class="image-item">
                         <img style="width: 450px;" src="/frontend/assets/images/gellary/g17.jpg" alt="Image-27"/>
                     </div>
-                </div>
-                <div class="column">
+                
                     <div class="image-item">
                         <img style="width: 450px;" src="/frontend/assets/images/gellary/news5.JPG" alt="Image-2" />
                     </div>
