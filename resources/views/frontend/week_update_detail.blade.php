@@ -168,6 +168,7 @@
             width: 220%;
             height: 35vh;
         }
+        
     </style>
 <section class="weekly-updates">
             <div class="container">
