@@ -40,70 +40,7 @@
             transition: 0.3s ease-in-out;
             transform: scale(1.0);
         } */
-        .contact-text-small {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--red);
-        }
-        .align-items-end {
-            align-items: flex-start !important;
-        }
-        .contact-div ul li {
-            display: inline-block;
-            margin-bottom: 22px;
-            font-size: 20px;
-            padding-right: 20px;
-        }
-        .contact-div ul {
-            padding: 0px;
-            padding-right: 50px;
-        }
-        .contact-div ul li a {
-            color: #ed2226;
-        }
-        .contact-div ul.solicalization li {
-            background-color: #ed2226;
-            color: #ffffff;
-            width: 40px !important;
-            height: 40px !important;
-            line-height: 40px;
-            /* padding: 9px 13px; */
-            border-radius: 33px;
-            }
-        .contact-div ul.solicalization li a {
-
-            color: #ffffff;
-            padding: 0px 11px;
-        }
-        .bone-btn {
-            text-align: center !important;
-            margin: 30px 0;
-        }
-        .plan-2 .col-md-4 a {
-            position: relative;
-        }
-        .plan-2 .col-md-4 .overlayy {
-            display: flex;
-            position: absolute;
-            top: -124px;
-            background: rgb(0, 0, 0);
-            background: rgba(0, 0, 0, 0.5) !important;
-            width: 100%;
-            height: 270px;
-            transition: .5s ease;
-            opacity: 0 !important;
-            color: white;
-            font-size: 20px;
-            padding: 20px;
-            text-align: center;
-            border-radius: 30px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .plan-2 .col-md-4:hover .overlayy {
-        opacity: 1 !important;
-        }
+      
     </style>
 </head>
 
